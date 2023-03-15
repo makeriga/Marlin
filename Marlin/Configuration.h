@@ -126,7 +126,7 @@
 #endif
 
 // Set dark background color for higher contrast.
-#define COLOR_BACKGROUND        COLOR_DARK
+#define COLOR_BACKGROUND        COLOR_BLACK
 
 /**
  * Serial Port Baud Rate
