@@ -1136,7 +1136,7 @@
 #if IS_2D
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95, 95 }
 #else
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 133 }
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
 #endif
 
 /**
