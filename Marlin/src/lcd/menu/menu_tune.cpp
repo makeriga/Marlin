@@ -117,6 +117,23 @@ void menu_tune() {
   EDIT_ITEM(int3, MSG_SPEED, &feedrate_percentage, 10, 999);
 
   //
+  // Babystep X:
+  // Babystep Y:
+  // Babystep Z:
+  //
+  #if ENABLED(BABYSTEPPING)
+    #if ENABLED(BABYSTEP_XY)
+      SUBMENU_N(X_AXIS, MSG_BABYSTEP_N, []{ _lcd_babystep_go(_lcd_babystep_x); });
+      SUBMENU_N(Y_AXIS, MSG_BABYSTEP_N, []{ _lcd_babystep_go(_lcd_babystep_y); });
+    #endif
+    #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
+      SUBMENU(MSG_ZPROBE_ZOFFSET, lcd_babystep_zoffset);
+    #else
+      SUBMENU_N(Z_AXIS, MSG_BABYSTEP_N, lcd_babystep_z);
+    #endif
+  #endif
+
+  //
   // Manual bed leveling, Bed Z:
   //
   #if BOTH(MESH_BED_LEVELING, LCD_BED_LEVELING)
@@ -215,23 +232,6 @@ void menu_tune() {
     #elif HAS_MULTI_EXTRUDER
       EXTRUDER_LOOP()
         EDIT_ITEM_N(float42_52, e, MSG_ADVANCE_K_E, &planner.extruder_advance_K[e], 0, 10);
-    #endif
-  #endif
-
-  //
-  // Babystep X:
-  // Babystep Y:
-  // Babystep Z:
-  //
-  #if ENABLED(BABYSTEPPING)
-    #if ENABLED(BABYSTEP_XY)
-      SUBMENU_N(X_AXIS, MSG_BABYSTEP_N, []{ _lcd_babystep_go(_lcd_babystep_x); });
-      SUBMENU_N(Y_AXIS, MSG_BABYSTEP_N, []{ _lcd_babystep_go(_lcd_babystep_y); });
-    #endif
-    #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
-      SUBMENU(MSG_ZPROBE_ZOFFSET, lcd_babystep_zoffset);
-    #else
-      SUBMENU_N(Z_AXIS, MSG_BABYSTEP_N, lcd_babystep_z);
     #endif
   #endif
 
