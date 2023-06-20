@@ -46,7 +46,7 @@
  */
 #define IS_BOARD_1_3            // Enable for board v1.3
 //#define IS_2D                   // Enable for the Neptune 2d (Dual extruder)
-//#define IS_BMG                  // Enable for installed BMG-like extruder
+#define IS_BMG                  // Enable for installed BMG-like extruder
 //#define USB_MOD                 // Enable if you've applied the Native USB mods (see README.md)
 #define FIRMWARE_BIN elegoo.bin   // Override the firmware binary output filename
 
@@ -1392,7 +1392,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH
 
 /**
  * MagLev V4 probe by MDD
@@ -1834,11 +1834,7 @@
  */
 #define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
-  #ifdef IS_BMG
-    #define FIL_RUNOUT_ENABLED_DEFAULT false // Enable the sensor on startup. Override with M412 followed by M500.
-  #else
-    #define FIL_RUNOUT_ENABLED_DEFAULT true
-  #endif
+  #define FIL_RUNOUT_ENABLED_DEFAULT true
   #ifdef IS_2D
     #define NUM_RUNOUT_SENSORS   2          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
   #else
