@@ -74,8 +74,9 @@
 // MAIN CONFIGURATION SWITCHES FOR FEATURES - see README.md for more details.
 
 #define IS_BOARD_1_3            true  // true if you have the 1.3 board, false for 1.2 board
-#define HAS_BLTOUCH             false  // true if you have a BlTouch or clone
+#define HAS_BLTOUCH             true  // true if you have a BlTouch or clone
 #define IS_2D                   false // true if you have a Neptuen 2d (Dual extruder)
+#define IS_BMG                  true  // true if you have a BMG extruder
 
 // Define missing pins
 #define MT_DET_PIN_STATE        LOW
@@ -1209,7 +1210,11 @@
 #if IS_2D
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95, 95 }
 #else
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 133 }
+  #ifdef IS_BMG
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 403 }
+  #else
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 133 }
+  #endif
 #endif
 
 /**
